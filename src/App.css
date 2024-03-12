@@ -9,7 +9,9 @@ body {
 }
 
 .scroll_html_elem {
-  position: absolute;
+  position: fixed !important;
   width: 360px;
-  transform: translateY(-50%);
+  transform: translateX(-50%);
+  top: 8vh;
+  left: 50vw;
 }

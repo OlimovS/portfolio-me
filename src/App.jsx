@@ -14,7 +14,7 @@ function App() {
       <color args={["#87ceeb"]} attach={"background"} />
       <Environment preset="city" blur={0.5} />
 
-      <ScrollControls pages={4} maxSpeed={0.7}>
+      <ScrollControls pages={3} maxSpeed={0.4}>
         <Scene />
         <HtmlElems />
       </ScrollControls>

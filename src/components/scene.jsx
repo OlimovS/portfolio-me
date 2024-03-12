@@ -13,7 +13,6 @@ export function Scene() {
   const camera_ref = useRef();
 
   const data = useScroll();
-  console.log(data);
 
   useLayoutEffect(() => {
     camera_ref.current.lookAt(0, 2, 0);
