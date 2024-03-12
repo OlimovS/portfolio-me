@@ -1,24 +1,22 @@
 import { Scene } from "./components/scene";
-import {
-  Environment,
-  PerspectiveCamera,
-  OrbitControls,
-  ScrollControls,
-  useScroll,
-  useAnimations,
-} from "@react-three/drei";
+import { Environment, Scroll, ScrollControls } from "@react-three/drei";
 // components
 // css
 import "./App.css";
+import { HtmlElems } from "./components/html-elems";
 
 function App() {
   return (
     <>
-      {/* <OrbitControls /> */}
-      <axesHelper args={[2, 2, 2]} />
-      <Environment preset="city" />
-      <ScrollControls pages={4} maxSpeed={0.4}>
+      {/* <OrbitControls
+      //  enableZoom={false} enablePan={false}
+      /> */}
+      <color args={["#87ceeb"]} attach={"background"} />
+      <Environment preset="city" blur={0.5} />
+
+      <ScrollControls pages={4} maxSpeed={0.7}>
         <Scene />
+        <HtmlElems />
       </ScrollControls>
     </>
   );

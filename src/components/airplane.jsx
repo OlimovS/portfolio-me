@@ -5,5 +5,9 @@ export const Airplane = forwardRef((props, ref) => {
   const { scene } = useGLTF(
     "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/helicopter/model.gltf"
   );
-  return <primitive ref={ref} name="farm" object={scene} {...props} />;
+  return (
+    <object3D>
+      <primitive ref={ref} name="farm" object={scene} {...props} />
+    </object3D>
+  );
 });

@@ -7,3 +7,9 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
+.scroll_html_elem {
+  position: absolute;
+  width: 360px;
+  transform: translateY(-50%);
+}

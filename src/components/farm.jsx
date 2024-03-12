@@ -17,7 +17,7 @@ export const Farm = forwardRef((props, ref) => {
   }, [scene]);
 
   return (
-    <group ref={ref}>
+    <group ref={ref} {...props}>
       <primitive name="farm" object={scene} />
     </group>
   );

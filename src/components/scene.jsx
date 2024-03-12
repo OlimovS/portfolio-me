@@ -2,10 +2,9 @@ import { Farm } from "./farm";
 import { Airplane } from "./airplane";
 import { PerspectiveCamera, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useEffect, useLayoutEffect, useRef } from "react";
-import { Vector3 } from "three";
+import { useLayoutEffect, useRef } from "react";
 
-const base_helicopter_rotation = Math.PI * 0.4;
+const base_y_helicopter_rotation = Math.PI * 0.4;
 
 export function Scene() {
   const farm_ref = useRef();
@@ -17,34 +16,38 @@ export function Scene() {
   console.log(data);
 
   useLayoutEffect(() => {
-    camera_ref.current.lookAt(0, 0, 0);
+    camera_ref.current.lookAt(0, 2, 0);
   }, []);
 
   useFrame(() => {
     const scrolled_section = data.range(0, 1);
 
-    farm_ref.current.rotation.y = 2 * Math.PI * scrolled_section;
-
-    const radius = 5;
-    const x = Math.sin(2 * Math.PI * scrolled_section) * 5;
-    const z = Math.cos(2 * Math.PI * scrolled_section) * 5;
-    helicopter_ref.current.position.x = x;
-    helicopter_ref.current.position.z = z;
-
+    const helicopter_radius = 5;
+    const xh = Math.sin(2 * Math.PI * scrolled_section) * helicopter_radius;
+    const zh = Math.cos(2 * Math.PI * scrolled_section) * helicopter_radius;
+    helicopter_ref.current.position.x = xh;
+    helicopter_ref.current.position.z = zh;
     helicopter_ref.current.rotation.y =
-      base_helicopter_rotation + 2 * Math.PI * scrolled_section;
+      base_y_helicopter_rotation + 2 * Math.PI * scrolled_section;
+
+    const camera_radius = 11;
+    const xc = Math.sin(2 * Math.PI * scrolled_section) * camera_radius;
+    const zc = Math.cos(2 * Math.PI * scrolled_section) * camera_radius;
+    camera_ref.current.position.x = xc;
+    camera_ref.current.position.z = zc;
+    camera_ref.current.lookAt(0, 2, 0);
   });
 
   return (
     <>
-      <Farm ref={farm_ref} />
+      <Farm ref={farm_ref} position-y={0} />
       <Airplane
         ref={helicopter_ref}
         position={[0, 1, 5]}
-        rotation-y={base_helicopter_rotation}
+        rotation-y={base_y_helicopter_rotation}
         scale={0.4}
       />
-      <PerspectiveCamera ref={camera_ref} makeDefault position-y={15} />
+      <PerspectiveCamera ref={camera_ref} makeDefault position={[0, 2, 10]} />
     </>
   );
 }
