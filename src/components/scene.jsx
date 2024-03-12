@@ -27,6 +27,8 @@ export function Scene() {
     const zh = Math.cos(2 * Math.PI * scrolled_section) * helicopter_radius;
     helicopter_ref.current.position.x = xh;
     helicopter_ref.current.position.z = zh;
+    helicopter_ref.current.position.y =
+      1 + Math.sin(6 * Math.PI * scrolled_section) / 10;
     helicopter_ref.current.rotation.y =
       base_y_helicopter_rotation + 2 * Math.PI * scrolled_section;
 
